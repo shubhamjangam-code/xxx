@@ -3,6 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 import PageTransition from '../components/PageTransition';
 import { PORTFOLIO_CATEGORIES, PORTFOLIO_ITEMS, STUDIO_INFO } from '../data/photographyData';
 import Lightbox from '../components/Lightbox';
+import WatermarkOverlay from '../components/WatermarkOverlay';
 import { MessageCircle, ArrowUpRight } from 'lucide-react';
 import { InstagramIcon } from '../components/Icons';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -110,6 +111,9 @@ export default function Portfolio() {
                     loading="lazy"
                     className="w-full object-cover filter brightness-95 group-hover:brightness-105 editorial-zoom-img"
                   />
+
+                  {/* Standardized Watermark Overlay */}
+                  <WatermarkOverlay />
 
                   {/* Subtle Hover Caption Overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-[#241C18]/85 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">

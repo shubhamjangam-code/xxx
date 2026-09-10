@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { X, ChevronLeft, ChevronRight, MessageCircle } from 'lucide-react';
 import { STUDIO_INFO } from '../data/photographyData';
+import WatermarkOverlay from './WatermarkOverlay';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export default function Lightbox({ item, items, currentIndex, onClose, onPrev, onNext }) {
@@ -102,11 +103,14 @@ export default function Lightbox({ item, items, currentIndex, onClose, onPrev, o
           onClick={(e) => e.stopPropagation()}
           className="relative max-w-5xl max-h-[85vh] flex flex-col items-center"
         >
-          <img
-            src={item.image}
-            alt={item.title || 'Samarth Studios Photography'}
-            className="max-h-[78vh] w-auto max-w-full object-contain rounded-2xl shadow-2xl"
-          />
+          <div className="relative overflow-hidden rounded-2xl">
+            <img
+              src={item.image}
+              alt={item.title || 'Samarth Studios Photography'}
+              className="max-h-[78vh] w-auto max-w-full object-contain rounded-2xl shadow-2xl"
+            />
+            <WatermarkOverlay className="bottom-4 right-4 sm:bottom-5 sm:right-5" />
+          </div>
 
           {/* Minimal Caption */}
           <div className="pt-4 text-center space-y-1">

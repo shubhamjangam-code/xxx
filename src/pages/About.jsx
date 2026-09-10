@@ -38,7 +38,7 @@ export default function About() {
               
               <div className="relative aspect-[4/5] rounded-2xl overflow-hidden editorial-zoom-container border-4 border-[#F8F5EF] shadow-xl">
                 <img
-                  src="https://images.unsplash.com/photo-1556157382-97eda2d62296?auto=format&fit=crop&w=1400&q=90"
+                  src="/nana_lipare.png"
                   alt="Nana Lipare - Samarth Studios Vita"
                   className="w-full h-full object-cover filter brightness-95 contrast-105 editorial-zoom-img"
                 />
