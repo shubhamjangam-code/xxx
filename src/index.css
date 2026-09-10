@@ -1,0 +1,164 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-serif: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+    --font-sans: 'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, sans-serif;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: #F8F5EF;
+    color: #241C18;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, .font-serif {
+    font-family: var(--font-serif);
+    letter-spacing: -0.01em;
+  }
+}
+
+/* Luxury Editorial & HD Styling System */
+
+/* Background Palette */
+.bg-warm-ivory { background-color: #F8F5EF; }
+.bg-soft-cream { background-color: #EFE9DE; }
+.bg-light-sand { background-color: #E4D8C8; }
+.bg-deep-espresso { background-color: #241C18; }
+.bg-deep-sage { background-color: #5E6B51; }
+.bg-muted-sage { background-color: #8D9B7A; }
+
+/* Text Palette */
+.text-deep-espresso { color: #241C18; }
+.text-warm-brown { color: #5D4B42; }
+.text-muted-brown { color: #83736A; }
+.text-warm-ivory { color: #F8F5EF; }
+.text-deep-sage { color: #5E6B51; }
+.text-antique-gold { color: #C5A059; }
+
+/* Gold & Luxury Shimmer Gradients */
+.bg-gold-gradient {
+  background: linear-gradient(135deg, #D4AF37 0%, #F3E5AB 50%, #AA771C 100%);
+}
+
+.text-gold-gradient {
+  background: linear-gradient(135deg, #B89A62 0%, #E2C58D 50%, #947238 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gold-bright {
+  background: linear-gradient(135deg, #D4AF37 0%, #FFF2AA 50%, #C5A059 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Glassmorphism Frosted Cards */
+.glass-card {
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(228, 216, 200, 0.7);
+}
+
+.glass-card-dark {
+  background: rgba(36, 28, 24, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(197, 160, 89, 0.25);
+}
+
+.glass-pill {
+  background: rgba(248, 245, 239, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(94, 107, 81, 0.2);
+}
+
+/* Gold Glowing Borders & Shadows */
+.gold-border-glow {
+  box-shadow: 0 0 25px rgba(197, 160, 89, 0.18), inset 0 0 15px rgba(197, 160, 89, 0.1);
+  border: 1px solid rgba(197, 160, 89, 0.4);
+}
+
+.hd-shadow-xl {
+  box-shadow: 0 20px 40px -15px rgba(36, 28, 24, 0.15), 0 0 30px rgba(94, 107, 81, 0.08);
+}
+
+.hd-photo-frame {
+  position: relative;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hd-photo-frame::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  pointer-events: none;
+}
+
+/* Ambient Glow Aura Effects */
+.aura-glow-gold {
+  background: radial-gradient(circle, rgba(197, 160, 89, 0.25) 0%, rgba(248, 245, 239, 0) 70%);
+}
+
+.aura-glow-sage {
+  background: radial-gradient(circle, rgba(94, 107, 81, 0.2) 0%, rgba(248, 245, 239, 0) 70%);
+}
+
+.aura-glow-rose {
+  background: radial-gradient(circle, rgba(217, 167, 155, 0.25) 0%, rgba(248, 245, 239, 0) 70%);
+}
+
+/* Smooth Editorial Zoom Effect */
+.editorial-zoom-container {
+  overflow: hidden;
+}
+
+.editorial-zoom-img {
+  transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s ease;
+}
+
+.editorial-zoom-container:hover .editorial-zoom-img {
+  transform: scale(1.06);
+  filter: brightness(1.05) contrast(1.02);
+}
+
+/* Subtle Floating Keyframe Animation */
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(0.5deg); }
+}
+
+.animate-float-slow {
+  animation: floatSlow 6s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.05); }
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 4s ease-in-out infinite;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #F8F5EF;
+}
+::-webkit-scrollbar-thumb {
+  background: #C5A059;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #5E6B51;
+}
