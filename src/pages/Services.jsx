@@ -39,7 +39,7 @@ export default function Services() {
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#5E6B51]/10 border border-[#5E6B51]/20">
               <Sparkles className="w-3.5 h-3.5 text-[#5E6B51]" />
               <span className="text-[11px] uppercase tracking-[0.3em] text-[#5E6B51] font-semibold">
-                Samarth Studios Vita
+                Sachin Ghongade Photo Studio
               </span>
             </div>
 
@@ -48,7 +48,7 @@ export default function Services() {
             </h1>
 
             <p className="text-base sm:text-lg text-[#5D4B42] font-light max-w-xl mx-auto leading-relaxed">
-              Every celebration, emotion & detail thoughtfully captured by Nana Lipare & team.
+              Every celebration, emotion & detail thoughtfully captured by Sachin Ghongade & team.
             </p>
           </div>
 
@@ -57,8 +57,8 @@ export default function Services() {
             {SERVICES_LIST.map((service, index) => {
               const isEven = index % 2 === 0;
               const bgGradient = frameBackdrops[index % frameBackdrops.length];
-              const whatsappEnquiryLink = `https://wa.me/919556565660?text=${encodeURIComponent(
-                `Hello Nana Lipare, I am interested in ${service.title} at Samarth Studios Vita.`
+              const whatsappEnquiryLink = `https://wa.me/919422427981?text=${encodeURIComponent(
+                `Hello Sachin Ghongade, I am interested in ${service.title} at Sachin Ghongade Photo Studio.`
               )}`;
 
               return (
@@ -162,7 +162,7 @@ export default function Services() {
               </h2>
 
               <p className="text-sm sm:text-base text-[#E4D8C8]/90 font-light max-w-xl mx-auto leading-relaxed">
-                Connect directly with lead photographer Nana Lipare on WhatsApp for personalized date availability, custom package quotes, and location planning.
+                Connect directly with lead photographer Sachin Ghongade on WhatsApp for personalized date availability, custom package quotes, and location planning.
               </p>
 
               <div className="pt-4">

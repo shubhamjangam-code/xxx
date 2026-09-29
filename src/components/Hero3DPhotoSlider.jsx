@@ -9,7 +9,7 @@ const HERO_SLIDES = [
     title: "Royal Couple Portrait",
     subtitle: "Maharashtrian Wedding Splendor",
     categoryFilter: "Weddings",
-    image: "/Weddings/Image-44116.jpg",
+    image: "/Weddings/wedding-4.jpg",
     tag: "Featured Story"
   },
   {
@@ -17,23 +17,23 @@ const HERO_SLIDES = [
     title: "Cinematic Pre-Wedding",
     subtitle: "Natural & Candid Moments",
     categoryFilter: "Pre-Wedding",
-    image: "/Weddings/Image-96657.jpg",
+    image: "/Prewedding/prewedding-1.jpg",
     tag: "Romantic Frames"
   },
   {
     id: 3,
-    title: "Vibrant Haldi Rituals",
+    title: "Mahantesh & Rutuja Wedding",
     subtitle: "Real Colors & Pure Joy",
     categoryFilter: "Weddings",
-    image: "/Haldi/Image-19038.jpg",
+    image: "/Weddings/wedding-2.webp",
     tag: "Traditional Ceremony"
   },
   {
     id: 4,
-    title: "Sacred Wedding Vows",
+    title: "Endless Laughter & Love",
     subtitle: "Timeless Emotion & Heritage",
-    categoryFilter: "Weddings",
-    image: "/Weddings/Image-33416.jpg",
+    categoryFilter: "Pre-Wedding",
+    image: "/Prewedding/prewedding-8.jpg",
     tag: "Golden Memories"
   },
   {
@@ -41,7 +41,7 @@ const HERO_SLIDES = [
     title: "Bridal Elegance",
     subtitle: "Editorial Lighting & Craft",
     categoryFilter: "Weddings",
-    image: "/Weddings/Image-21450.jpg",
+    image: "/Weddings/wedding-6.jpg",
     tag: "Fine Art Portrait"
   }
 ];
@@ -201,7 +201,7 @@ export default function Hero3DPhotoSlider() {
               <img
                 src={slide.image}
                 alt={slide.title}
-                className="w-full h-full object-cover filter brightness-95 hover:scale-105 transition-transform duration-700 ease-out"
+                className="w-full h-full object-cover object-[center_20%] filter brightness-95 hover:scale-105 transition-transform duration-700 ease-out"
               />
 
               {/* Overlay Gradient & Glass Caption */}

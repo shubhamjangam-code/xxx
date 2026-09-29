@@ -106,7 +106,7 @@ export default function Lightbox({ item, items, currentIndex, onClose, onPrev, o
           <div className="relative overflow-hidden rounded-2xl">
             <img
               src={item.image}
-              alt={item.title || 'Samarth Studios Photography'}
+              alt={item.title || 'Sachin Ghongade Photo Studio Photography'}
               className="max-h-[78vh] w-auto max-w-full object-contain rounded-2xl shadow-2xl"
             />
             <WatermarkOverlay className="bottom-4 right-4 sm:bottom-5 sm:right-5" />

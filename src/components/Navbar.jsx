@@ -73,8 +73,9 @@ export default function Navbar() {
       dropdownItems: [
         { label: 'All Stories', path: '/portfolio', icon: Image },
         { label: 'Weddings', path: '/portfolio?category=Weddings', icon: Heart },
+        { label: 'Pre-Wedding', path: '/portfolio?category=Pre-Wedding', icon: Camera },
+        { label: 'Events & Celebrations', path: '/portfolio?category=Family%20%26%20Events', icon: Image },
         { label: 'Baby & Kids', path: '/portfolio?category=Baby%20%26%20Kids', icon: Baby },
-        { label: 'Family & Events', path: '/portfolio?category=Family%20%26%20Events', icon: Image },
       ]
     },
     {
@@ -83,8 +84,9 @@ export default function Navbar() {
       hasDropdown: true,
       dropdownItems: [
         { label: 'Wedding Photography & Films', path: '/services#wedding-photography', icon: Camera },
+        { label: 'Pre-Wedding Shoots & Films', path: '/services#prewedding-shoots', icon: Heart },
+        { label: 'Events & Celebrations', path: '/services#family-events', icon: Image },
         { label: 'Baby & Kids Shoots', path: '/services#baby-kids', icon: Baby },
-        { label: 'Family & Event Coverage', path: '/services#family-events', icon: Image },
       ]
     },
     {
@@ -92,9 +94,9 @@ export default function Navbar() {
       path: '/about',
       hasDropdown: true,
       dropdownItems: [
-        { label: 'Meet Nana Lipare', path: '/about#nana-lipare', icon: Users },
+        { label: 'Meet Sachin Ghongade', path: '/about#sachin-ghongade', icon: Users },
         { label: 'Our Approach', path: '/about#our-approach', icon: Heart },
-        { label: 'Follow on Instagram', external: STUDIO_INFO.nanaInstagram, icon: InstagramIcon },
+        { label: 'Follow on Instagram', external: STUDIO_INFO.studioInstagram, icon: InstagramIcon },
       ]
     },
     {
@@ -146,17 +148,24 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-6 sm:px-8 flex items-center justify-between nav-dropdown-container relative pointer-events-auto">
         {/* Left Logo */}
-        <NavLink to="/" className="flex flex-col group">
-          <span className={`font-serif text-lg sm:text-xl font-bold tracking-[0.18em] uppercase transition-colors leading-tight drop-shadow-sm ${
-            isDarkNav ? 'text-[#F8F5EF] group-hover:text-[#C5A059]' : 'text-[#241C18] group-hover:text-[#5E6B51]'
-          }`}>
-            SAMARTH STUDIOS
-          </span>
-          <span className={`text-[10px] tracking-[0.35em] uppercase font-semibold transition-colors ${
-            isDarkNav ? 'text-[#C5A059]' : 'text-[#B86D56]'
-          }`}>
-            VITA
-          </span>
+        <NavLink to="/" className="flex items-center gap-3 group">
+          <img 
+            src="/sachin_ghongade_logo.jpg" 
+            alt="Sachin Ghongade Photo Studio" 
+            className="w-10 h-10 sm:w-11 sm:h-11 rounded-full object-cover border border-[#C5A059]/40 shadow-sm transition-transform group-hover:scale-105" 
+          />
+          <div className="flex flex-col">
+            <span className={`font-serif text-base sm:text-lg font-bold tracking-[0.14em] uppercase transition-colors leading-tight drop-shadow-sm ${
+              isDarkNav ? 'text-[#F8F5EF] group-hover:text-[#C5A059]' : 'text-[#241C18] group-hover:text-[#5E6B51]'
+            }`}>
+              SACHIN GHONGADE
+            </span>
+            <span className={`text-[9px] sm:text-[10px] tracking-[0.3em] uppercase font-semibold transition-colors ${
+              isDarkNav ? 'text-[#C5A059]' : 'text-[#B86D56]'
+            }`}>
+              PHOTO STUDIO
+            </span>
+          </div>
         </NavLink>
 
         {/* Center Navigation Links with Submenus (Desktop) */}
@@ -330,7 +339,7 @@ export default function Navbar() {
               </a>
 
               <p className="text-[11px] text-[#83736A] text-center tracking-widest uppercase font-mono">
-                Vita, Maharashtra • Nana Lipare
+                Sachin Ghongade Photo Studio
               </p>
             </div>
           </motion.div>

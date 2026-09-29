@@ -30,16 +30,16 @@ export default function About() {
         <div className="max-w-[1440px] w-[calc(100%-32px)] sm:w-[calc(100%-48px)] mx-auto space-y-16">
           
           {/* Main Content Layout */}
-          <div id="nana-lipare" className="grid grid-cols-1 md:grid-cols-12 gap-10 items-center scroll-mt-28 max-w-5xl mx-auto">
+          <div id="sachin-ghongade" className="grid grid-cols-1 md:grid-cols-12 gap-10 items-center scroll-mt-28 max-w-5xl mx-auto">
             
-            {/* Main Photographer Image */}
+            {/* Main Photographer Image / Logo */}
             <div className="md:col-span-5 relative">
-              <div className="absolute -inset-3 bg-[#8D9B7A]/20 rounded-2xl transform -rotate-1 pointer-events-none" />
+              <div className="absolute -inset-3 bg-[#C5A059]/20 rounded-2xl transform -rotate-1 pointer-events-none" />
               
-              <div className="relative aspect-[4/5] rounded-2xl overflow-hidden editorial-zoom-container border-4 border-[#F8F5EF] shadow-xl">
+              <div className="relative aspect-[4/5] rounded-2xl overflow-hidden editorial-zoom-container border-4 border-[#F8F5EF] shadow-xl bg-black flex items-center justify-center">
                 <img
-                  src="/nana_lipare.png"
-                  alt="Nana Lipare - Samarth Studios Vita"
+                  src="/sachin_ghongade_logo.jpg"
+                  alt="Sachin Ghongade - Sachin Ghongade Photo Studio"
                   className="w-full h-full object-cover filter brightness-95 contrast-105 editorial-zoom-img"
                 />
               </div>
@@ -60,7 +60,7 @@ export default function About() {
               </div>
 
               <p className="text-base text-[#5D4B42] font-light leading-relaxed">
-                At Samarth Studios Vita, every photograph begins with a real moment. Nana Lipare brings a calm, personal and cinematic approach to weddings, portraits and celebrations — creating images that feel as meaningful years later as they do today.
+                At Sachin Ghongade Photo Studio, every photograph begins with a real moment. Sachin Ghongade brings a calm, personal and cinematic approach to weddings, portraits and celebrations — creating images that feel as meaningful years later as they do today.
               </p>
 
               {/* Our Approach Section */}

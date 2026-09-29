@@ -2,6 +2,7 @@ import React, { useState, useMemo, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import PageTransition from '../components/PageTransition';
 import { PORTFOLIO_CATEGORIES, PORTFOLIO_ITEMS, STUDIO_INFO } from '../data/photographyData';
+import { getPortfolioItems } from '../services/dataService';
 import Lightbox from '../components/Lightbox';
 import WatermarkOverlay from '../components/WatermarkOverlay';
 import { MessageCircle, ArrowUpRight } from 'lucide-react';
@@ -13,11 +14,31 @@ export default function Portfolio() {
   const initialCategory = searchParams.get('category') || 'All';
   const [selectedCategory, setSelectedCategory] = useState(initialCategory);
   const [lightboxIndex, setLightboxIndex] = useState(null);
+  const [portfolioItems, setPortfolioItems] = useState(PORTFOLIO_ITEMS);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    async function loadRealtimePortfolio() {
+      try {
+        const items = await getPortfolioItems();
+        if (items && items.length > 0) {
+          setPortfolioItems(items);
+        }
+      } catch (err) {
+        console.error("Error loading portfolio from Firestore:", err);
+      } finally {
+        setLoading(false);
+      }
+    }
+    loadRealtimePortfolio();
+  }, []);
 
   useEffect(() => {
     const catFromUrl = searchParams.get('category');
     if (catFromUrl) {
       setSelectedCategory(catFromUrl);
+    } else {
+      setSelectedCategory('All');
     }
   }, [searchParams]);
 
@@ -32,9 +53,9 @@ export default function Portfolio() {
   };
 
   const filteredItems = useMemo(() => {
-    if (selectedCategory === 'All') return PORTFOLIO_ITEMS;
-    return PORTFOLIO_ITEMS.filter((item) => item.category === selectedCategory);
-  }, [selectedCategory]);
+    if (selectedCategory === 'All') return portfolioItems;
+    return portfolioItems.filter((item) => item.category === selectedCategory);
+  }, [selectedCategory, portfolioItems]);
 
   const currentLightboxItem = lightboxIndex !== null ? filteredItems[lightboxIndex] : null;
 
@@ -61,7 +82,7 @@ export default function Portfolio() {
           {/* Page Header */}
           <div className="text-center max-w-2xl mx-auto space-y-3">
             <span className="text-xs uppercase tracking-[0.35em] text-[#5E6B51] font-semibold">
-              Samarth Studios Vita
+              Sachin Ghongade Photo Studio
             </span>
             <h1 className="font-serif text-4xl sm:text-6xl font-normal text-[#241C18] tracking-tight">
               Selected Stories
@@ -76,7 +97,7 @@ export default function Portfolio() {
                 <button
                   key={cat.id}
                   onClick={() => handleCategorySelect(cat.id)}
-                  className={`px-4 py-2 text-xs uppercase tracking-[0.18em] transition-all duration-200 ${
+                  className={`px-4 py-2 text-xs uppercase tracking-[0.18em] transition-all duration-200 cursor-pointer ${
                     isActive
                       ? 'text-[#5E6B51] border-b-2 border-[#5E6B51] font-semibold'
                       : 'text-[#83736A] hover:text-[#241C18]'
@@ -89,45 +110,52 @@ export default function Portfolio() {
           </div>
 
           {/* Masonry Gallery */}
-          <motion.div
-            layout
-            className="columns-1 sm:columns-2 lg:columns-3 gap-4 space-y-4"
-          >
-            <AnimatePresence>
-              {filteredItems.map((item, index) => (
-                <motion.div
-                  key={item.id}
-                  layout
-                  initial={{ opacity: 0, scale: 0.96 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.96 }}
-                  transition={{ duration: 0.3 }}
-                  onClick={() => setLightboxIndex(index)}
-                  className="group cursor-pointer relative overflow-hidden editorial-zoom-container break-inside-avoid rounded-2xl border border-[#E4D8C8]"
-                >
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    loading="lazy"
-                    className="w-full object-cover filter brightness-95 group-hover:brightness-105 editorial-zoom-img"
-                  />
+          {loading ? (
+            <div className="py-20 text-center">
+              <div className="w-8 h-8 border-3 border-[#5E6B51] border-t-transparent rounded-full animate-spin mx-auto mb-3" />
+              <p className="text-xs text-[#83736A] uppercase tracking-wider font-semibold">Loading Gallery...</p>
+            </div>
+          ) : (
+            <motion.div
+              layout
+              className="columns-1 sm:columns-2 lg:columns-3 gap-4 space-y-4"
+            >
+              <AnimatePresence>
+                {filteredItems.map((item, index) => (
+                  <motion.div
+                    key={item.id || index}
+                    layout
+                    initial={{ opacity: 0, scale: 0.96 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.96 }}
+                    transition={{ duration: 0.3 }}
+                    onClick={() => setLightboxIndex(index)}
+                    className="group cursor-pointer relative overflow-hidden editorial-zoom-container break-inside-avoid rounded-2xl border border-[#E4D8C8]"
+                  >
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      loading="lazy"
+                      className="w-full object-cover filter brightness-95 group-hover:brightness-105 editorial-zoom-img"
+                    />
 
-                  {/* Standardized Watermark Overlay */}
-                  <WatermarkOverlay />
+                    {/* Standardized Watermark Overlay */}
+                    <WatermarkOverlay />
 
-                  {/* Subtle Hover Caption Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#241C18]/85 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
-                    <span className="text-[10px] uppercase tracking-[0.25em] text-[#8D9B7A] font-semibold">
-                      {item.category}
-                    </span>
-                    <h3 className="font-serif text-lg font-light text-[#F8F5EF] mt-0.5">
-                      {item.title}
-                    </h3>
-                  </div>
-                </motion.div>
-              ))}
-            </AnimatePresence>
-          </motion.div>
+                    {/* Subtle Hover Caption Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#241C18]/85 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
+                      <span className="text-[10px] uppercase tracking-[0.25em] text-[#8D9B7A] font-semibold">
+                        {item.category}
+                      </span>
+                      <h3 className="font-serif text-lg font-light text-[#F8F5EF] mt-0.5">
+                        {item.title}
+                      </h3>
+                    </div>
+                  </motion.div>
+                ))}
+              </AnimatePresence>
+            </motion.div>
+          )}
 
           {/* Lightbox Modal */}
           <Lightbox

@@ -7,31 +7,31 @@ import { STUDIO_INFO } from '../data/photographyData';
 export const ENHANCED_REVIEWS = [
   {
     id: 1,
-    quote: "Nana Lipare and the Samarth Studio team made our wedding memories look like a royal movie. Every haldi ritual and bridal portrait was captured with such grace and rich colors!",
+    quote: "Sachin Ghongade and his team made our wedding memories look like a royal movie. Every haldi ritual and bridal portrait was captured with such grace and rich colors!",
     names: "Suraj & Pranali",
-    venue: "Grand Palace Lawns, Vita",
-    city: "Vita, Maharashtra",
+    venue: "Grand Palace Lawns",
+    city: "Maharashtra",
     rating: 5,
     tag: "Wedding & Haldi",
     eventDate: "Nov 2025",
-    portraitImg: "/Weddings/Image-44116.jpg"
+    portraitImg: "/Weddings/wedding-4.jpg"
   },
   {
     id: 2,
-    quote: "Our pre-wedding shoot experience was unbelievable! Nana sir guided us so naturally — nothing felt staged or uncomfortable. The cinematic color tones are world-class.",
+    quote: "Our pre-wedding shoot experience was unbelievable! Sachin sir guided us so naturally — nothing felt staged or uncomfortable. The cinematic color tones are world-class.",
     names: "Tanvi & Digvijay",
     venue: "Sayaji Royal Gardens",
     city: "Karad",
     rating: 5,
     tag: "Pre-Wedding Shoot",
     eventDate: "Dec 2025",
-    portraitImg: "/Weddings/Image-96657.jpg"
+    portraitImg: "/Prewedding/prewedding-1.jpg"
   },
   {
     id: 3,
     quote: "The baby photoshoot exceeded all our expectations! They were so gentle, patient, and creative with our 6-month-old. Truly the finest photography studio in the region.",
     names: "Priyanka & Rahul",
-    venue: "Samarth Studio Indoor Set",
+    venue: "Indoor Studio Set",
     city: "Sangli",
     rating: 5,
     tag: "Baby Milestone Shoot",
@@ -43,22 +43,22 @@ export const ENHANCED_REVIEWS = [
     quote: "Professionalism, artistic vision, and incredible lighting. They captured our traditional Maharashtrian rituals with immense respect and perfection. Highly recommended!",
     names: "Akshay & Snehal",
     venue: "Hotel Saffron Executive",
-    city: "Vita",
+    city: "Maharashtra",
     rating: 5,
     tag: "Grand Wedding Ceremony",
     eventDate: "Feb 2026",
-    portraitImg: "/Weddings/Image-33097.jpg"
+    portraitImg: "/Weddings/wedding-2.webp"
   },
   {
     id: 5,
-    quote: "From the Haldi yellow vibrant portraits to our emotional Bidaai frames, every single photograph tells an authentic emotional story. We will cherish these albums forever.",
+    quote: "From the ring ceremony portraits to our emotional frames, every single photograph tells an authentic story. We will cherish these albums forever.",
     names: "Rohan & Shraddha",
     venue: "Green Acres Resort",
     city: "Satara",
     rating: 5,
-    tag: "Haldi & Wedding Film",
+    tag: "Engagement & Event Film",
     eventDate: "Jan 2026",
-    portraitImg: "/Haldi/Image-19038.jpg"
+    portraitImg: "/Events/event-9.jpg"
   }
 ];
 
@@ -231,9 +231,9 @@ export default function ClientReviewSlider() {
 
                     {/* Sub-Footer Detail */}
                     <div className="pt-4 border-t border-[#E4D8C8]/60 flex items-center justify-between text-xs text-[#83736A]">
-                      <span className="font-mono">Photographed by Nana Lipare</span>
+                      <span className="font-mono">Photographed by Sachin Ghongade</span>
                       <span className="text-[#5E6B51] font-semibold underline underline-offset-4 decoration-[#C5A059]">
-                        Samarth Studios Vita
+                        Sachin Ghongade Photo Studio
                       </span>
                     </div>
                   </div>

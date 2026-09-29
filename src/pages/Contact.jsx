@@ -5,6 +5,8 @@ import { Phone, MapPin, MessageCircle, Send, Navigation, ArrowUpRight } from 'lu
 import { InstagramIcon } from '../components/Icons';
 import { motion } from 'framer-motion';
 
+import { saveContactMessage } from '../services/dataService';
+
 export default function Contact() {
   const [formData, setFormData] = useState({
     name: '',
@@ -18,10 +20,23 @@ export default function Contact() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const whatsappText = `Hello Nana Lipare,\n\nI want to enquire about a shoot at Samarth Studios Vita.\n\n` +
+    // Save inquiry to Firestore for Admin Messages tab
+    try {
+      await saveContactMessage({
+        name: formData.name,
+        phone: formData.phone,
+        eventCategory: formData.shootType,
+        date: formData.eventDate,
+        message: formData.message
+      });
+    } catch (err) {
+      console.error("Could not save inquiry to Firestore:", err);
+    }
+
+    const whatsappText = `Hello Sachin Ghongade,\n\nI want to enquire about a shoot at Sachin Ghongade Photo Studio.\n\n` +
       `• Name: ${formData.name || 'Not specified'}\n` +
       `• Mobile Number: ${formData.phone || 'Not specified'}\n` +
       `• Shoot Type: ${formData.shootType}\n` +
@@ -29,10 +44,11 @@ export default function Contact() {
       `• Message: ${formData.message || 'No additional message'}`;
 
     const encodedText = encodeURIComponent(whatsappText);
-    const whatsappRedirectUrl = `https://wa.me/919556565660?text=${encodedText}`;
+    const whatsappRedirectUrl = `https://wa.me/919422427981?text=${encodedText}`;
 
     window.open(whatsappRedirectUrl, '_blank');
   };
+
 
   return (
     <PageTransition>
@@ -47,7 +63,7 @@ export default function Contact() {
             {/* Page Header */}
             <div className="text-center max-w-2xl mx-auto space-y-3">
               <span className="text-xs uppercase tracking-[0.35em] text-[#5E6B51] font-semibold">
-                Samarth Studios Vita
+                Sachin Ghongade Photo Studio
               </span>
               <h1 className="font-serif text-4xl sm:text-6xl font-normal text-[#241C18] tracking-tight">
                 Let’s capture your story.
@@ -204,7 +220,7 @@ export default function Contact() {
                   className="flex items-center justify-center sm:justify-start gap-1.5 text-sm text-[#241C18] hover:text-[#5E6B51] transition-colors"
                 >
                   <InstagramIcon className="w-4 h-4 text-[#5E6B51]" />
-                  <span>@samarth_studio_vita</span>
+                  <span>{STUDIO_INFO.instagramHandle}</span>
                   <ArrowUpRight className="w-3.5 h-3.5" />
                 </a>
               </div>
