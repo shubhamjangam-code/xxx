@@ -5,13 +5,14 @@ import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { STUDIO_INFO } from '../data/photographyData';
 import { Menu, X, ArrowRight, ChevronDown, Camera, Film, Heart, Baby, Users, Image } from 'lucide-react';
 import { InstagramIcon } from './Icons';
-import { motion, AnimatePresence } from 'framer-motion';
+import QuickEnquiryModal from './QuickEnquiryModal';
 
 export default function Navbar() {
   const [scrollY, setScrollY] = useState(0);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [mobileAccordion, setMobileAccordion] = useState(null);
+  const [isEnquiryOpen, setIsEnquiryOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
   const dropdownTimeoutRef = useRef(null);
@@ -252,6 +253,14 @@ export default function Navbar() {
 
         {/* Right CTA Button & Mobile Toggle */}
         <div className="flex items-center gap-3">
+          <button
+            onClick={() => setIsEnquiryOpen(true)}
+            className="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-[0.2em] bg-gradient-to-r from-[#C5A059] to-[#AA771C] text-[#241C18] shadow-md hover:shadow-lg hover:brightness-110 transition-all duration-300"
+          >
+            <span>Book a Shoot</span>
+            <ArrowRight className="w-3.5 h-3.5" />
+          </button>
+
           {/* Mobile Menu Toggle */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -328,15 +337,16 @@ export default function Navbar() {
             </div>
 
             <div className="space-y-4 pt-6 border-t border-[#E4D8C8] mt-6">
-              <a
-                href={STUDIO_INFO.whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
+              <button
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  setIsEnquiryOpen(true);
+                }}
                 className="w-full flex items-center justify-center gap-2 py-4 px-6 text-xs uppercase font-semibold tracking-[0.2em] text-[#F8F5EF] bg-[#5E6B51] rounded-full shadow-md hover:bg-[#4B5640] transition-colors"
               >
-                <span>Book a Shoot on WhatsApp</span>
+                <span>Book a Shoot</span>
                 <ArrowRight className="w-4 h-4" />
-              </a>
+              </button>
 
               <p className="text-[11px] text-[#83736A] text-center tracking-widest uppercase font-mono">
                 Sachin Ghongade Photo Studio
@@ -345,6 +355,9 @@ export default function Navbar() {
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* Instant Enquiry Modal */}
+      <QuickEnquiryModal isOpen={isEnquiryOpen} onClose={() => setIsEnquiryOpen(false)} />
     </header>
   );
 }

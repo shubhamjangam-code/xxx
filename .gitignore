@@ -27,3 +27,5 @@ sg photography/
 *.njsproj
 *.sln
 *.sw?
+
+.vercel
